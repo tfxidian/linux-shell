@@ -114,3 +114,51 @@ $
     # Capture value returnd by last command
     ret=$?
     echo "The sum of two numbers is $ret !"
+
+
+输出重定向
+命令输出重定向的语法为：
+
+    $ command > file
+
+这样，输出到显示器的内容就可以被重定向到文件。
+
+例如，下面的命令在显示器上不会看到任何输出：
+
+    $ who > users
+
+打开 users 文件，可以看到下面的内容：
+
+$ cat users
+oko         tty01   Sep 12 07:30
+ai          tty15   Sep 12 13:32
+ruth        tty21   Sep 12 10:10
+pat         tty24   Sep 12 13:07
+steve       tty25   Sep 12 13:03
+$
+
+输出重定向会覆盖文件内容，请看下面的例子：
+
+$ echo line 1 > users
+$ cat users
+line 1
+$
+
+如果不希望文件内容被覆盖，可以使用 >> 追加到文件末尾，例如：
+
+$ echo line 2 >> users
+$ cat users
+line 1
+line 2
+$
+
+
+Shell文件包含
+
+subscript.sh
+url="http://see.xidian.edu.cn"
+
+main.c
+#!/bin/bash
+. subscript.sh
+echo $url
